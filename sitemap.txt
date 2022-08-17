@@ -1,7 +1,7 @@
+https://me.seraphs.blog/tags/index.html
 https://me.seraphs.blog/network/tcp/2015-04-09-shell-cookbook01/
 https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/
 https://me.seraphs.blog/categories/index.html
-https://me.seraphs.blog/tags/index.html
 https://me.seraphs.blog/
 https://me.seraphs.blog/tags/TCP/
 https://me.seraphs.blog/tags/%E7%BD%91%E7%BB%9C/
