@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://me.seraphs.blog/network/tcp/2015-04-09-shell-cookbook01/</loc>
+    <loc>https://me.seraphs.blog/linux/shell/2015-04-09-shell-cookbook01/</loc>
     
     <lastmod>2022-08-17</lastmod>
     
@@ -45,6 +45,34 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://me.seraphs.blog/tags/SHELL/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.seraphs.blog/tags/Bash/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.seraphs.blog/tags/Script/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.seraphs.blog/tags/linux/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://me.seraphs.blog/tags/TCP/</loc>
@@ -84,7 +112,21 @@
 
   
   <url>
+    <loc>https://me.seraphs.blog/categories/linux/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://me.seraphs.blog/categories/network/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.seraphs.blog/categories/linux/shell/</loc>
     <lastmod>2022-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
