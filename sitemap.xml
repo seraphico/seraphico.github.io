@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://seraphs.blog/tags/index.html</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/</loc>
     
     <lastmod>2022-08-17</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://seraphs.blog/categories/index.html</loc>
-    
-    <lastmod>2022-08-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://seraphs.blog/tags/index.html</loc>
     
     <lastmod>2022-08-17</lastmod>
     

@@ -1,6 +1,6 @@
+https://seraphs.blog/tags/index.html
 https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/
 https://seraphs.blog/categories/index.html
-https://seraphs.blog/tags/index.html
 https://seraphs.blog/
 https://seraphs.blog/tags/TCP/
 https://seraphs.blog/tags/%E7%BD%91%E7%BB%9C/
