@@ -6,7 +6,7 @@
   <link href="https://me.seraphs.blog/atom.xml" rel="self"/>
   
   <link href="https://me.seraphs.blog/"/>
-  <updated>2022-08-17T09:58:37.572Z</updated>
+  <updated>2022-08-17T10:04:55.063Z</updated>
   <id>https://me.seraphs.blog/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/"/>
     <id>https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/</id>
     <published>2022-08-16T02:32:11.000Z</published>
-    <updated>2022-08-17T09:58:37.572Z</updated>
+    <updated>2022-08-17T10:04:55.063Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pktmbuf: `dpip <span class="built_in">link</span> show -s`</span><br><span class="line">sapool: `dpip addr show -s`</span><br><span class="line">conn: `ipvsadm -<span class="built_in">ln</span>`</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -55,7 +55,7 @@
     <link href="https://me.seraphs.blog/linux/shell/2015-04-09-shell-cookbook01/"/>
     <id>https://me.seraphs.blog/linux/shell/2015-04-09-shell-cookbook01/</id>
     <published>2015-04-09T03:41:05.000Z</published>
-    <updated>2022-08-17T09:58:37.572Z</updated>
+    <updated>2022-08-17T10:04:55.063Z</updated>
     
     <content type="html"><![CDATA[<h6 id="Shell思想（KISS）相当重要-我们遵循KISS原则-keep-it-simple-stupid-这事其实不难，只要按照以下思路进行就行了。"><a href="#Shell思想（KISS）相当重要-我们遵循KISS原则-keep-it-simple-stupid-这事其实不难，只要按照以下思路进行就行了。" class="headerlink" title="Shell思想（KISS）相当重要,我们遵循KISS原则(keep it simple\stupid),这事其实不难，只要按照以下思路进行就行了。"></a>Shell思想（KISS）相当重要,我们遵循KISS原则(keep it simple\stupid),这事其实不难，只要按照以下思路进行就行了。</h6><blockquote><ol><li>把复杂的问题简单化，模块化 </li><li>写出每一个模块的伪码。 </li><li>组装你的模块 </li><li>写出shell code </li><li>测试（test）</li></ol></blockquote><p>知道什么时候用什么实现，远比你知道怎么写code更重要。（shell不是万能的，择优取之。shell最精华，最美的地方在于有现成的命令可以使用，不用考虑过多的底层的问题。作为上层工作的最好的工具.所谓上层指系统管理，网络管理等等。)</p><p><strong>战略决定生死，细节决定成败</strong></p><h3>shell章节</h3><ul><li><pre><code>讨厌的正则</code></pre><ul><li><pre><code>可爱的变量</code></pre><ul><li><pre><code>简单明了的输入输出</code></pre></li></ul></li></ul></li></ul>]]></content>
     
