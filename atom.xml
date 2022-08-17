@@ -3,11 +3,11 @@
   <title>Seraph&#39;s Blog</title>
   
   
-  <link href="https://seraphs.blog/atom.xml" rel="self"/>
+  <link href="https://me.seraphs.blog/atom.xml" rel="self"/>
   
-  <link href="https://seraphs.blog/"/>
-  <updated>2022-08-17T09:43:37.043Z</updated>
-  <id>https://seraphs.blog/</id>
+  <link href="https://me.seraphs.blog/"/>
+  <updated>2022-08-17T09:50:27.944Z</updated>
+  <id>https://me.seraphs.blog/</id>
   
   <author>
     <name>Seraphico</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>DPDK Test</title>
-    <link href="https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/"/>
-    <id>https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/</id>
+    <link href="https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/"/>
+    <id>https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/</id>
     <published>2022-08-16T02:32:11.000Z</published>
-    <updated>2022-08-17T09:43:37.043Z</updated>
+    <updated>2022-08-17T09:50:27.944Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pktmbuf: `dpip <span class="built_in">link</span> show -s`</span><br><span class="line">sapool: `dpip addr show -s`</span><br><span class="line">conn: `ipvsadm -<span class="built_in">ln</span>`</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -33,20 +33,57 @@
     
     
     
-    <category term="network" scheme="https://seraphs.blog/categories/network/"/>
+    <category term="network" scheme="https://me.seraphs.blog/categories/network/"/>
     
-    <category term="tcp" scheme="https://seraphs.blog/categories/network/tcp/"/>
+    <category term="tcp" scheme="https://me.seraphs.blog/categories/network/tcp/"/>
     
     
-    <category term="TCP" scheme="https://seraphs.blog/tags/TCP/"/>
+    <category term="TCP" scheme="https://me.seraphs.blog/tags/TCP/"/>
     
-    <category term="网络" scheme="https://seraphs.blog/tags/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="https://me.seraphs.blog/tags/%E7%BD%91%E7%BB%9C/"/>
     
-    <category term="系统" scheme="https://seraphs.blog/tags/%E7%B3%BB%E7%BB%9F/"/>
+    <category term="系统" scheme="https://me.seraphs.blog/tags/%E7%B3%BB%E7%BB%9F/"/>
     
-    <category term="数据包" scheme="https://seraphs.blog/tags/%E6%95%B0%E6%8D%AE%E5%8C%85/"/>
+    <category term="数据包" scheme="https://me.seraphs.blog/tags/%E6%95%B0%E6%8D%AE%E5%8C%85/"/>
     
-    <category term="分析" scheme="https://seraphs.blog/tags/%E5%88%86%E6%9E%90/"/>
+    <category term="分析" scheme="https://me.seraphs.blog/tags/%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell_cookbook_01</title>
+    <link href="https://me.seraphs.blog/network/tcp/2015-04-09-shell-cookbook01/"/>
+    <id>https://me.seraphs.blog/network/tcp/2015-04-09-shell-cookbook01/</id>
+    <published>2015-04-09T03:41:05.000Z</published>
+    <updated>2022-08-17T09:50:27.944Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="tagline">linux 天使团团长：隋成龙</h4><h4>linux天使团成员：邢耀东</h4><p> 思想（KISS）相当重要,我们遵循KISS原则(keep it simple\stupid),这事其实不难，只要按照以下思路进行就行了。</p> <blockquote><ol><li>把复杂的问题简单化，模块化 </li><li>写出每一个模块的伪码。 </li><li>组装你的模块 </li><li>写出shell code </li><li>测试（test）</li></ol></blockquote><p>知道什么时候用什么实现，远比你知道怎么写code更重要。（shell不是万能的，择优取之。shell最精华，最美的地方在于有现成的命令可以使用，不用考虑过多的底层的问题。作为上层工作的最好的工具.所谓上层指系统管理，网络管理等等。)</p><p><strong>战略决定生死，细节决定成败</strong></p><h3>shell章节</h3><ul><li><pre><code>讨厌的正则</code></pre><ul><li><pre><code>可爱的变量</code></pre><ul><li><pre><code>简单明了的输入输出</code></pre></li></ul></li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;tagline&quot;&gt;linux 天使团团长：隋成龙&lt;/h4&gt;
+&lt;h4&gt;linux天使团成员：邢耀东&lt;/h4&gt;
+&lt;p&gt; 思想（KISS）相当重要,我们遵循KISS原则(keep it simple\stupid),这事其实不难，只要按照以下思路进行就行了。&lt;/p&gt;
+ </summary>
+      
+    
+    
+    
+    <category term="network" scheme="https://me.seraphs.blog/categories/network/"/>
+    
+    <category term="tcp" scheme="https://me.seraphs.blog/categories/network/tcp/"/>
+    
+    
+    <category term="TCP" scheme="https://me.seraphs.blog/tags/TCP/"/>
+    
+    <category term="网络" scheme="https://me.seraphs.blog/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="系统" scheme="https://me.seraphs.blog/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="数据包" scheme="https://me.seraphs.blog/tags/%E6%95%B0%E6%8D%AE%E5%8C%85/"/>
+    
+    <category term="分析" scheme="https://me.seraphs.blog/tags/%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
