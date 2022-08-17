@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>DPDK Test</title>
+      <link href="//network/tcp/2020-12-12-dpdk-part01/"/>
+      <url>//network/tcp/2020-12-12-dpdk-part01/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pktmbuf: `dpip <span class="built_in">link</span> show -s`</span><br><span class="line">sapool: `dpip addr show -s`</span><br><span class="line">conn: `ipvsadm -<span class="built_in">ln</span>`</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> network </category>
+          
+          <category> tcp </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TCP </tag>
+            
+            <tag> 网络 </tag>
+            
+            <tag> 系统 </tag>
+            
+            <tag> 数据包 </tag>
+            
+            <tag> 分析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

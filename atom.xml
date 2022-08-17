@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Seraph&#39;s Blog</title>
+  
+  
+  <link href="https://seraphs.blog/atom.xml" rel="self"/>
+  
+  <link href="https://seraphs.blog/"/>
+  <updated>2022-08-17T08:13:30.817Z</updated>
+  <id>https://seraphs.blog/</id>
+  
+  <author>
+    <name>Seraphico</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DPDK Test</title>
+    <link href="https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/"/>
+    <id>https://seraphs.blog/network/tcp/2020-12-12-dpdk-part01/</id>
+    <published>2022-08-16T02:32:11.000Z</published>
+    <updated>2022-08-17T08:13:30.817Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pktmbuf: `dpip <span class="built_in">link</span> show -s`</span><br><span class="line">sapool: `dpip addr show -s`</span><br><span class="line">conn: `ipvsadm -<span class="built_in">ln</span>`</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=</summary>
+      
+    
+    
+    
+    <category term="network" scheme="https://seraphs.blog/categories/network/"/>
+    
+    <category term="tcp" scheme="https://seraphs.blog/categories/network/tcp/"/>
+    
+    
+    <category term="TCP" scheme="https://seraphs.blog/tags/TCP/"/>
+    
+    <category term="网络" scheme="https://seraphs.blog/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="系统" scheme="https://seraphs.blog/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="数据包" scheme="https://seraphs.blog/tags/%E6%95%B0%E6%8D%AE%E5%8C%85/"/>
+    
+    <category term="分析" scheme="https://seraphs.blog/tags/%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+</feed>
