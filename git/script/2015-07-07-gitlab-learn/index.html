@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;zh-TW&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>gitlab-learn | Seraph's Blog</title><meta name="keywords" content="git,github"><meta name="author" content="Seraphico"><meta name="copyright" content="Seraphico"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Distribution      : CentOS 6.5 GitLab version    : 6.0 - 6.3 Web Server        : Apache, Nginx Init system       : sysvinit Database          : MySQL, PostgreSQL Contributors      : @nielsbasjes, @axi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlab-learn">
+<meta property="og:url" content="https://me.seraphs.blog/git/script/2015-07-07-gitlab-learn/index.html">
+<meta property="og:site_name" content="Seraph&#39;s Blog">
+<meta property="og:description" content="Distribution      : CentOS 6.5 GitLab version    : 6.0 - 6.3 Web Server        : Apache, Nginx Init system       : sysvinit Database          : MySQL, PostgreSQL Contributors      : @nielsbasjes, @axi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://me.seraphs.blog/images/tcppacket/pexels-vie-studio-7004955.jpg">
+<meta property="article:published_time" content="2015-07-07T04:55:11.000Z">
+<meta property="article:modified_time" content="2022-08-18T01:16:16.390Z">
+<meta property="article:author" content="Seraphico">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://me.seraphs.blog/images/tcppacket/pexels-vie-studio-7004955.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://me.seraphs.blog/git/script/2015-07-07-gitlab-learn/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;492e83a66c304bb490fec26c50c174b4&quot;}"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"CCERYBETD8","apiKey":"d75ada830fe77e44ce58e9e4bf26cf9d","indexName":"seraphico","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'gitlab-learn',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-18 09:16:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><link rel="stylesheet" href="/css/custome/admonition.css"><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Seraph's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-code"></i><span> 编程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/code/cpp/"><i class="fa-fw fa-brands fa-c"></i><span> C++</span></a></li><li><a class="site-page child" href="/code/rust/"><i class="fa-fw fa-brands fa-rust"></i><span> Rust</span></a></li><li><a class="site-page child" href="/code/python/"><i class="fa-fw fa-brands fa-python"></i><span> Python</span></a></li><li><a class="site-page child" href="/code/golang/"><i class="fa-fw fa-brands fa-golang"></i><span> Golang</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-brands fa-instagram"></i><span> 鸡零狗碎</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/lives/order/"><i class="fa-fw fa-solid fa-blog"></i><span> 偶尔</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Seraph's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-code"></i><span> 编程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/code/cpp/"><i class="fa-fw fa-brands fa-c"></i><span> C++</span></a></li><li><a class="site-page child" href="/code/rust/"><i class="fa-fw fa-brands fa-rust"></i><span> Rust</span></a></li><li><a class="site-page child" href="/code/python/"><i class="fa-fw fa-brands fa-python"></i><span> Python</span></a></li><li><a class="site-page child" href="/code/golang/"><i class="fa-fw fa-brands fa-golang"></i><span> Golang</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-brands fa-instagram"></i><span> 鸡零狗碎</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/lives/order/"><i class="fa-fw fa-solid fa-blog"></i><span> 偶尔</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">gitlab-learn</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2015-07-07T04:55:11.000Z" title="发表于 2015-07-07 12:55:11">2015-07-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-18T01:16:16.390Z" title="更新于 2022-08-18 09:16:16">2022-08-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/git/">git</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/git/script/">script</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="gitlab-learn"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><pre>Distribution      : CentOS 6.5
+GitLab version    : 6.0 - 6.3
+Web Server        : Apache, Nginx
+Init system       : sysvinit
+Database          : MySQL, PostgreSQL
+<h5>Contributors      : @nielsbasjes, @axilleas, @mairin, @ponsjuh, @yorn, @psftw, @etcet</h5>
+Additional Notes  : In order to get a proper Ruby setup we build it from source
+</pre>
+
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Please read <code>doc/install/requirements.md</code> for hardware and platform requirements.</p>
+<h3 id="Important-Notes"><a href="#Important-Notes" class="headerlink" title="Important Notes"></a>Important Notes</h3><p>The following steps have been known to work and should be followed from up to bottom.<br>If you deviate from this guide, do it with caution and make sure you don’t violate<br>any assumptions GitLab makes about its environment. We have also tried this on<br>RHEL 6.3 and found that there are subtle differences which are documented in part.<br>Look for the <strong>RHEL Notes</strong> note.</p>
+<h4 id="If-you-find-a-bug"><a href="#If-you-find-a-bug" class="headerlink" title="If you find a bug"></a>If you find a bug</h4><p>If you find a bug&#x2F;error in this guide please submit an issue or pull request<br>following the contribution guide (see <a href="../../CONTRIBUTING.md">CONTRIBUTING.md</a>).</p>
+<h4 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h4><p>Many setup guides of Linux software simply state: “disable selinux and firewall”.<br>This guide does not disable any of them, we simply configure them as they were intended.</p>
+<hr>
+<p>The GitLab installation consists of setting up the following components:</p>
+<ol>
+<li>Install the base operating system (CentOS 6.4 Minimal) and Packages &#x2F; Dependencies</li>
+<li>Ruby</li>
+<li>System Users</li>
+<li>GitLab shell</li>
+<li>Database</li>
+<li>GitLab</li>
+<li>Web server</li>
+<li>Firewall</li>
+</ol>
+<hr>
+<h2 id="1-Installing-the-operating-system-CentOS-6-4-Minimal"><a href="#1-Installing-the-operating-system-CentOS-6-4-Minimal" class="headerlink" title="1. Installing the operating system (CentOS 6.4 Minimal)"></a>1. Installing the operating system (CentOS 6.4 Minimal)</h2><p>We start with a completely clean CentOS 6.4 “minimal” installation which can be<br>accomplished by downloading the appropriate installation iso file. Just boot the<br>system of the iso file and install the system.</p>
+<p>Note that during the installation you use the <em>“Configure Network”</em> option (it’s a<br>button in the same screen where you specify the hostname) to enable the <em>“Connect automatically”</em><br>option for the network interface and hand (usually eth0).</p>
+<p><strong>If you forget this option the network will NOT start at boot.</strong></p>
+<p>The end result is a bare minimum CentOS installation that effectively only has<br>network connectivity and (almost) no services at all.</p>
+<h2 id="Updating-and-adding-basic-software-and-services"><a href="#Updating-and-adding-basic-software-and-services" class="headerlink" title="Updating and adding basic software and services"></a>Updating and adding basic software and services</h2><h3 id="Add-EPEL-repository"><a href="#Add-EPEL-repository" class="headerlink" title="Add EPEL repository"></a>Add EPEL repository</h3><p><a target="_blank" rel="noopener" href="https://fedoraproject.org/wiki/EPEL">EPEL</a> is a volunteer-based community effort from the Fedora project to create<br>a repository of high-quality add-on packages that complement the Fedora-based<br>Red Hat Enterprise Linux (RHEL) and its compatible spinoffs, such as CentOS and Scientific Linux.</p>
+<p>As part of the Fedora packaging community, EPEL packages are 100% free&#x2F;libre open source software (FLOSS).</p>
+<p>Download the GPG key for EPEL repository from <a target="_blank" rel="noopener" href="https://fedoraproject.org/keys">fedoraproject</a> and install it on your system:</p>
+<pre><code>sudo wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6 https://www.fedoraproject.org/static/0608B895.txt
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+</code></pre>
+<p>Verify that the key got installed successfully:</p>
+<pre><code>sudo rpm -qa gpg*
+gpg-pubkey-0608b895-4bd22942
+</code></pre>
+<p>Now install the <code>epel-release-6-8.noarch</code> package, which will enable EPEL repository on your system:</p>
+<pre><code>sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+</code></pre>
+<p><strong>Note:</strong> Don’t mind the <code>x86_64</code>, if you install on a i686 system you can use the same commands.</p>
+<h3 id="Add-PUIAS-Computational-repository"><a href="#Add-PUIAS-Computational-repository" class="headerlink" title="Add PUIAS Computational repository"></a>Add PUIAS Computational repository</h3><p>The <a target="_blank" rel="noopener" href="https://puias.math.ias.edu/wiki/YumRepositories6#Computational">PUIAS Computational</a> repository is a part of <a target="_blank" rel="noopener" href="https://puias.math.ias.edu/">PUIAS&#x2F;Springdale Linux</a>,<br>a custom Red Hat&amp;reg; distribution maintained by <a target="_blank" rel="noopener" href="http://www.princeton.edu/">Princeton University</a> and the<br><a target="_blank" rel="noopener" href="http://www.ias.edu/">Institute for Advanced Study</a>.  We take advantage of the PUIAS<br>Computational repository to obtain a git v1.8.x package since the base CentOS<br>repositories only provide v1.7.1 which is not compatible with GitLab.<br>Although the PUIAS offers an RPM to install the repo, it requires the<br>other PUIAS repos as a dependency, so you’ll have to add it manually.</p>
+<p>Create &#x2F;etc&#x2F;yum.repos.d&#x2F;PUIAS_6_computational.repo and add the following lines:</p>
+<pre><code>[PUIAS_6_computational]
+name=PUIAS computational Base $releasever - $basearch
+mirrorlist=http://puias.math.ias.edu/data/puias/computational/$releasever/$basearch/mirrorlist
+#baseurl=http://puias.math.ias.edu/data/puias/computational/$releasever/$basearch
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puias
+</code></pre>
+<p>Next download and install the gpg key.</p>
+<pre><code>sudo wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-puias http://springdale.math.ias.edu/data/puias/6/x86_64/os/RPM-GPG-KEY-puias
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puias
+</code></pre>
+<p>Verify that the key got installed successfully:</p>
+<pre><code>sudo rpm -qa gpg*
+gpg-pubkey-41a40948-4ce19266
+</code></pre>
+<p>Verify that the EPEL and PUIAS Computational repositories are enabled as shown below:</p>
+<pre><code>sudo yum repolist
+repo id                 repo name                                                status
+PUIAS_6_computational   PUIAS computational Base 6 - x86_64                      2,018
+base                    CentOS-6 - Base                                          4,802
+epel                    Extra Packages for Enterprise Linux 6 - x86_64           7,879
+extras                  CentOS-6 - Extras                                           12
+updates                 CentOS-6 - Updates                                         814
+repolist: 15,525
+</code></pre>
+<p>If you can’t see them listed, use the folowing command (from yum-utils package) to enable them:</p>
+<pre><code>sudo yum-config-manager --enable epel --enable PUIAS_6_computational
+</code></pre>
+<h3 id="Install-the-required-tools-for-GitLab"><a href="#Install-the-required-tools-for-GitLab" class="headerlink" title="Install the required tools for GitLab"></a>Install the required tools for GitLab</h3><pre><code>su -
+yum -y update
+yum -y groupinstall &#39;Development Tools&#39;
+yum -y install vim-enhanced readline readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel curl-devel expat-devel db4-devel byacc sqlite-devel gcc-c++ libyaml libyaml-devel libffi libffi-devel libxml2 libxml2-devel libxslt libxslt-devel libicu libicu-devel system-config-firewall-tui python-devel redis sudo wget crontabs logwatch logrotate perl-Time-HiRes git
+</code></pre>
+<p><strong>RHEL Notes</strong></p>
+<p>If some packages (eg. gdbm-devel, libffi-devel and libicu-devel) are NOT installed,<br>add the rhel6 optional packages repo to your server to get those packages:</p>
+<pre><code>yum-config-manager --enable rhel-6-server-optional-rpms
+</code></pre>
+<p>Tip taken from <a target="_blank" rel="noopener" href="https://github.com/gitlabhq/gitlab-recipes/issues/62">here</a>.</p>
+<h3 id="Configure-redis"><a href="#Configure-redis" class="headerlink" title="Configure redis"></a>Configure redis</h3><p>Make sure redis is started on boot:</p>
+<pre><code>sudo chkconfig redis on
+sudo service redis start
+</code></pre>
+<h3 id="Configure-sendmail"><a href="#Configure-sendmail" class="headerlink" title="Configure sendmail"></a>Configure sendmail</h3><pre><code>su -
+yum -y install sendmail-cf
+cd /etc/mail
+vim /etc/mail/sendmail.mc
+</code></pre>
+<p>Add a line with the smtp gateway hostname</p>
+<pre><code>define(`SMART_HOST&#39;, `smtp.example.com&#39;)dnl
+</code></pre>
+<p>Then replace this line:</p>
+<pre><code>EXPOSED_USER(`root&#39;)dnl
+</code></pre>
+<p>with:</p>
+<pre><code>dnl EXPOSED_USER(`root&#39;)dnl
+</code></pre>
+<p>Now enable these settings:</p>
+<pre><code>make
+chkconfig sendmail on
+</code></pre>
+<p>Alternatively you can install <code>postfix</code>.</p>
+<hr>
+<h2 id="2-Ruby"><a href="#2-Ruby" class="headerlink" title="2. Ruby"></a>2. Ruby</h2><p>Download and compile it:</p>
+<pre><code>su -
+mkdir /tmp/ruby &amp;&amp; cd /tmp/ruby
+curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz | tar xz
+cd ruby-2.0.0-p353
+./configure --prefix=/usr/local/
+make &amp;&amp; make install
+</code></pre>
+<p>Logout and login again for the <code>$PATH</code> to take effect. Check that ruby is properly<br>installed with:</p>
+<pre><code>which ruby
+# /usr/local/bin/ruby
+ruby -v
+# ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-linux]
+</code></pre>
+<p>Install the Bundler Gem:</p>
+<pre><code> sudo gem install bundler --no-ri --no-rdoc
+</code></pre>
+<p><strong>NOTE:</strong> If you get an error like <code>sudo: gem: command not found</code>, it is because<br>CentOS has sudo built with the <code>--with-secure-path</code> flag. See this post on <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/257616/sudo-changes-path-why">stackoverflow</a><br>on how to deal with it. Alternatively, login as root and run the command.</p>
+<hr>
+<h2 id="3-System-Users"><a href="#3-System-Users" class="headerlink" title="3. System Users"></a>3. System Users</h2><h3 id="Create-user-for-Git"><a href="#Create-user-for-Git" class="headerlink" title="Create user for Git"></a>Create user for Git</h3><pre><code>su -
+adduser --system --shell /bin/bash --comment &#39;GitLab&#39; --create-home --home-dir /home/git/ git
+</code></pre>
+<p>We do NOT set the password so this user cannot login.</p>
+<h3 id="Forwarding-all-emails"><a href="#Forwarding-all-emails" class="headerlink" title="Forwarding all emails"></a>Forwarding all emails</h3><p>Now we want all logging of the system to be forwarded to a central email address:</p>
+<pre><code>su -
+echo adminlogs@example.com &gt; /root/.forward
+chown root /root/.forward
+chmod 600 /root/.forward
+restorecon /root/.forward
+
+echo adminlogs@example.com &gt; /home/git/.forward
+chown git /home/git/.forward
+chmod 600 /home/git/.forward
+restorecon /home/git/.forward
+</code></pre>
+<hr>
+<h2 id="4-GitLab-shell"><a href="#4-GitLab-shell" class="headerlink" title="4. GitLab shell"></a>4. GitLab shell</h2><p>GitLab Shell is a ssh access and repository management software developed specially for GitLab.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># First login as root</span><br><span class="line">su -</span><br><span class="line"></span><br><span class="line"># Login as git</span><br><span class="line">su - git</span><br><span class="line"></span><br><span class="line"># Clone gitlab shell</span><br><span class="line">git clone https://github.com/gitlabhq/gitlab-shell.git</span><br><span class="line">cd gitlab-shell</span><br><span class="line"></span><br><span class="line"># Switch to right version</span><br><span class="line">git checkout v1.8.0</span><br><span class="line">cp config.yml.example config.yml</span><br><span class="line"></span><br><span class="line"># Edit config and replace gitlab_url with something like &#x27;http://domain.com/&#x27;</span><br><span class="line">#</span><br><span class="line"># Note, &#x27;gitlab_url&#x27; is used by gitlab-shell to access GitLab API. Since </span><br><span class="line">#     1. the whole communication is locally</span><br><span class="line">#     2. next steps will explain how to expose GitLab over HTTPS with custom cert</span><br><span class="line"># it&#x27;s a good solution is to set gitlab_url as &quot;http://localhost:8080/&quot;</span><br><span class="line"></span><br><span class="line"># Do setup</span><br><span class="line">./bin/install</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-Database"><a href="#5-Database" class="headerlink" title="5. Database"></a>5. Database</h2><h3 id="5-1-MySQL"><a href="#5-1-MySQL" class="headerlink" title="5.1 MySQL"></a>5.1 MySQL</h3><p>Install <code>mysql</code> and enable the <code>mysqld</code> service to start on boot:</p>
+<pre><code>su -
+yum install -y mysql-server mysql-devel
+chkconfig mysqld on
+service mysqld start
+</code></pre>
+<p>Secure MySQL by entering a root password and say “Yes” to all questions:</p>
+<pre><code>/usr/bin/mysql_secure_installation
+</code></pre>
+<p>Create a new user and database for GitLab:</p>
+<pre><code># Login to MySQL
+mysql -u root -p
+# Type the database root password
+# Create a user for GitLab. (change supersecret to a real password)
+CREATE USER &#39;gitlab&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;supersecret&#39;;
+
+# Create the GitLab production database
+CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+
+# Grant the GitLab user necessary permissopns on the table.
+GRANT SELECT, LOCK TABLES, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `gitlabhq_production`.* TO &#39;gitlab&#39;@&#39;localhost&#39;;
+
+# Quit the database session
+\q
+</code></pre>
+<p>Try connecting to the new database with the new user:</p>
+<pre><code>mysql -u gitlab -p -D gitlabhq_production
+# Type the password you replaced supersecret with earlier
+# Quit the database session
+\q
+</code></pre>
+<h3 id="5-2-PostgreSQL"><a href="#5-2-PostgreSQL" class="headerlink" title="5.2 PostgreSQL"></a>5.2 PostgreSQL</h3><p>Install <code>postgresql-server</code> and the <code>postgreqsql-devel</code> libraries.</p>
+<pre><code>su -
+yum install postgresql-server postgresql-devel
+</code></pre>
+<p>Initialize the database.</p>
+<pre><code>service postgresql initdb
+</code></pre>
+<p>Start the service and configure service to start on boot</p>
+<pre><code>service postgresql start
+chkconfig postgresql on
+</code></pre>
+<p>Configure the database user and password.</p>
+<pre><code>su - postgres
+psql -d template1
+psql (8.4.13)
+
+template1=# CREATE USER git WITH PASSWORD &#39;your-password-here&#39;;
+CREATE ROLE
+template1=# CREATE DATABASE gitlabhq_production OWNER git;
+CREATE DATABASE
+template1=# \q
+exit # exit uid=postgres, return to root
+</code></pre>
+<p>Test the connection as the gitlab (uid&#x3D;git) user.</p>
+<pre><code>su - git
+psql -d gitlabhq_production -W # prompts for your password.
+</code></pre>
+<hr>
+<h2 id="6-GitLab"><a href="#6-GitLab" class="headerlink" title="6. GitLab"></a>6. GitLab</h2><p>We’ll install GitLab into home directory of the user <code>git</code>:</p>
+<pre><code>su -
+su - git
+</code></pre>
+<h3 id="Clone-the-Source"><a href="#Clone-the-Source" class="headerlink" title="Clone the Source"></a>Clone the Source</h3><pre><code># Clone GitLab repository
+git clone https://github.com/gitlabhq/gitlabhq.git gitlab
+
+# Go to gitlab directory
+cd /home/git/gitlab
+
+# Checkout to stable release
+git checkout 6-3-stable
+</code></pre>
+<p><strong>Note:</strong> You can change <code>6-3-stable</code> to <code>master</code> if you want the <em>bleeding edge</em> version, but<br>do so with caution!</p>
+<h3 id="Configure-it"><a href="#Configure-it" class="headerlink" title="Configure it"></a>Configure it</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># Copy the example GitLab config</span><br><span class="line">cp config/gitlab.yml.example config/gitlab.yml</span><br><span class="line"></span><br><span class="line"># Replace your_domain_name with the fully-qualified domain name of your host serving GitLab</span><br><span class="line">sed -i &#x27;s|localhost|your_domain_name|g&#x27; config/gitlab.yml</span><br><span class="line"></span><br><span class="line"># Make sure GitLab can write to the log/ and tmp/ directories</span><br><span class="line">chown -R git log/</span><br><span class="line">chown -R git tmp/</span><br><span class="line">chmod -R u+rwX  log/</span><br><span class="line">chmod -R u+rwX  tmp/</span><br><span class="line"></span><br><span class="line"># Create directory for satellites</span><br><span class="line">mkdir /home/git/gitlab-satellites</span><br><span class="line"></span><br><span class="line"># Create directories for sockets/pids and make sure GitLab can write to them</span><br><span class="line">mkdir tmp/pids/</span><br><span class="line">mkdir tmp/sockets/</span><br><span class="line">chmod -R u+rwX  tmp/pids/</span><br><span class="line">chmod -R u+rwX  tmp/sockets/</span><br><span class="line"></span><br><span class="line"># Create public/uploads directory otherwise backup will fail</span><br><span class="line">mkdir public/uploads</span><br><span class="line">chmod -R u+rwX  public/uploads</span><br><span class="line"></span><br><span class="line"># Copy the example Unicorn config</span><br><span class="line">cp config/unicorn.rb.example config/unicorn.rb</span><br><span class="line"></span><br><span class="line"># Enable cluster mode if you expect to have a high load instance</span><br><span class="line"># E.g. change amount of workers to 3 for 2GB RAM server</span><br><span class="line">editor config/unicorn.rb</span><br><span class="line"></span><br><span class="line"># Configure Git global settings for git user, useful when editing via web</span><br><span class="line"># Edit user.email according to what is set in gitlab.yml</span><br><span class="line">git config --global user.name &quot;GitLab&quot;</span><br><span class="line">git config --global user.email &quot;gitlab@your_domain_name&quot;</span><br><span class="line">git config --global core.autocrlf input</span><br></pre></td></tr></table></figure>
+
+<p><strong>Important:</strong> Make sure to edit both <code>gitlab.yml</code> and <code>unicorn.rb</code> to match your setup.</p>
+<h3 id="Configure-GitLab-DB-settings"><a href="#Configure-GitLab-DB-settings" class="headerlink" title="Configure GitLab DB settings"></a>Configure GitLab DB settings</h3><pre><code># MySQL
+cp config/database.yml&#123;.mysql,&#125;
+
+# PostgreSQL 
+cp config/database.yml&#123;.postgresql,&#125;
+</code></pre>
+<p>Make sure to update username&#x2F;password in <code>config/database.yml</code>. You only need to adapt the production settings (first part).</p>
+<pre><code># PostgreSQL example config/database.yml
+# disable host/port in order to support the default postgresql ident auth
+# PRODUCTION
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: gitlabhq_production
+  pool: 5
+  username: git
+  password: your-password-here
+  #host: localhost
+  #port: 5432 
+  # socket: /tmp/postgresql.sock 
+</code></pre>
+<p>If you followed the database guide then please do as follows:</p>
+<ul>
+<li>Change <code>root</code> to <code>gitlab</code>.</li>
+<li>Change <code>secure password</code> with the value you have given to supersecret.</li>
+</ul>
+<p>You can keep the double quotes around the password.</p>
+<pre><code>editor config/database.yml
+</code></pre>
+<p>Make config&#x2F;database.yml readable to git only</p>
+<pre><code>chmod o-rwx config/database.yml
+</code></pre>
+<h3 id="Install-Gems"><a href="#Install-Gems" class="headerlink" title="Install Gems"></a>Install Gems</h3><pre><code>su -
+gem install charlock_holmes --version &#39;0.6.9.4&#39;
+exit
+</code></pre>
+<p>For MySQL (note, the option says “without … postgres”):</p>
+<pre><code>cd /home/git/gitlab/
+bundle install --deployment --without development test postgres puma aws
+</code></pre>
+<h3 id="Initialize-Database-and-Activate-Advanced-Features"><a href="#Initialize-Database-and-Activate-Advanced-Features" class="headerlink" title="Initialize Database and Activate Advanced Features"></a>Initialize Database and Activate Advanced Features</h3><pre><code>cd /home/git/gitlab
+bundle exec rake gitlab:setup RAILS_ENV=production
+</code></pre>
+<p>Type ‘yes’ to create the database.<br>When done you see ‘Administrator account created:’</p>
+<h3 id="Install-Init-Script"><a href="#Install-Init-Script" class="headerlink" title="Install Init Script"></a>Install Init Script</h3><p>Download the init script (will be &#x2F;etc&#x2F;init.d&#x2F;gitlab):</p>
+<pre><code>su -
+wget -O /etc/init.d/gitlab https://raw.github.com/gitlabhq/gitlab-recipes/master/init/sysvinit/centos/gitlab-unicorn
+chmod +x /etc/init.d/gitlab
+chkconfig --add gitlab
+</code></pre>
+<p>Make GitLab start on boot:</p>
+<pre><code>chkconfig gitlab on
+</code></pre>
+<h3 id="Check-Application-Status"><a href="#Check-Application-Status" class="headerlink" title="Check Application Status"></a>Check Application Status</h3><p>Check if GitLab and its environment are configured correctly:</p>
+<pre><code>su - git
+cd gitlab/
+bundle exec rake gitlab:env:info RAILS_ENV=production
+exit
+</code></pre>
+<h3 id="Start-your-GitLab-instance"><a href="#Start-your-GitLab-instance" class="headerlink" title="Start your GitLab instance:"></a>Start your GitLab instance:</h3><pre><code>service gitlab start
+</code></pre>
+<h3 id="Double-check-Application-Status"><a href="#Double-check-Application-Status" class="headerlink" title="Double-check Application Status"></a>Double-check Application Status</h3><p>To make sure you didn’t miss anything run a more thorough check with:</p>
+<pre><code>su - git
+cd gitlab/
+bundle exec rake gitlab:check RAILS_ENV=production
+</code></pre>
+<p>Now, the output will complain that your init script is not up-to-date as follows:</p>
+<p>Init script up-to-date? … no<br>  Try fixing it:<br>  Redownload the init script<br>  For more information see:<br>  doc&#x2F;install&#x2F;installation.md in section “Install Init Script”<br>  Please fix the error above and rerun the checks.  </p>
+<p>Do not care about it  if you are sure that you have downloaded the up-to-date file from <a target="_blank" rel="noopener" href="https://raw.github.com/gitlabhq/gitlab-recipes/master/init/sysvinit/centos/gitlab-unicorn">https://raw.github.com/gitlabhq/gitlab-recipes/master/init/sysvinit/centos/gitlab-unicorn</a> and saved it to &#x2F;etc&#x2F;init.d&#x2F;gitlab.<br>If all other items are green, then congratulations on successfully installing GitLab!<br>However there are still a few steps left.</p>
+<h2 id="7-Configure-the-web-server"><a href="#7-Configure-the-web-server" class="headerlink" title="7. Configure the web server"></a>7. Configure the web server</h2><p>Use either Nginx or Apache, not both. Official installation guide recommends nginx.</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line">yum -y install nginx</span><br><span class="line">chkconfig nginx on</span><br><span class="line">mkdir /etc/nginx/sites-&#123;available,enabled&#125;</span><br><span class="line">wget -O /etc/nginx/sites-available/gitlab https://raw.github.com/gitlabhq/gitlab-recipes/master/web-server/nginx/gitlab-ssl</span><br><span class="line">ln -sf /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab</span><br></pre></td></tr></table></figure>
+
+<p>Edit <code>/etc/nginx/nginx.conf</code> and replace <code>include /etc/nginx/conf.d/*.conf;</code><br>with <code>include /etc/nginx/sites-enabled/*;</code></p>
+<p>Edit <code>/etc/nginx/sites-available/gitlab</code> and replace <code>git.example.com</code> with your FQDN.</p>
+<p>Add <code>nginx</code> user to <code>git</code> group.</p>
+<pre><code>usermod -a -G git nginx
+chmod g+rx /home/git/
+</code></pre>
+<p><strong>Note:</strong> Don’t forget to add a SSL certificate or generate a Self Signed Certificate</p>
+<pre><code>cd /etc/nginx
+openssl req -new -x509 -nodes -days 3560 -out gitlab.crt -keyout gitlab.key
+</code></pre>
+<p>Finally start nginx with:</p>
+<pre><code>service nginx start
+</code></pre>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><p>We will configure apache with module <code>mod_proxy</code> which is loaded by default when<br>installing apache:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su -</span><br><span class="line">yum -y install httpd mod_ssl</span><br><span class="line">chkconfig httpd on</span><br><span class="line">wget -O /etc/httpd/conf.d/gitlab.conf https://raw.github.com/gitlabhq/gitlab-recipes/master/web-server/apache/gitlab.conf</span><br></pre></td></tr></table></figure>
+
+<p>Open <code>/etc/httpd/conf.d/gitlab.conf</code> with your editor and replace <code>git.example.org</code> with your FQDN.</p>
+<p>Add <code>LoadModule ssl_module /etc/httpd/modules/mod_ssl.so</code> in <code>/etc/httpd/conf/httpd.conf</code></p>
+<p>If you want to run other websites on the same system, you’ll need to add in <code>/etc/httpd/conf/httpd.conf</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NameVirtualHost *:80</span><br><span class="line">&lt;IfModule mod_ssl.c&gt;</span><br><span class="line">    # If you add NameVirtualHost *:443 here, you will also have to change</span><br><span class="line">    # the VirtualHost statement in /etc/httpd/conf.d/gitlab.conf</span><br><span class="line">    # to &lt;VirtualHost *:443&gt;</span><br><span class="line">    NameVirtualHost *:443</span><br><span class="line">    Listen 443</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Poke a selinux hole for httpd so it can be in front of GitLab:</p>
+<pre><code>setsebool -P httpd_can_network_connect on
+</code></pre>
+<p>Start apache:</p>
+<pre><code>service httpd start
+</code></pre>
+<h2 id="8-Configure-the-firewall"><a href="#8-Configure-the-firewall" class="headerlink" title="8. Configure the firewall"></a>8. Configure the firewall</h2><p>Poke an iptables hole so users can access the httpd (http and https ports) and ssh.</p>
+<pre><code>lokkit -s http -s https -s ssh
+</code></pre>
+<p>Restart the service for the changes to take effect:</p>
+<pre><code>service iptables restart
+</code></pre>
+<h2 id="Done"><a href="#Done" class="headerlink" title="Done!"></a>Done!</h2><p>Visit YOUR_SERVER for your first GitLab login.<br>The setup has created an admin account for you. You can use it to log in:</p>
+<pre><code>admin@local.host
+5iveL!fe
+</code></pre>
+<p>You will then be redirected to change the default admin password.</p>
+<h2 id="Links-used-in-this-guide"><a href="#Links-used-in-this-guide" class="headerlink" title="Links used in this guide"></a>Links used in this guide</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.thegeekstuff.com/2012/06/enable-epel-repository/">EPEL information</a></li>
+<li><a target="_blank" rel="noopener" href="http://wiki.centos.org/TipsAndTricks/SelinuxBooleans">SELinux booleans</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://me.seraphs.blog">Seraphico</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://me.seraphs.blog/git/script/2015-07-07-gitlab-learn/">https://me.seraphs.blog/git/script/2015-07-07-gitlab-learn/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://me.seraphs.blog" target="_blank">Seraph's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/git/">git</a><a class="post-meta__tags" href="/tags/github/">github</a></div><div class="post_share"><div class="social-share" data-image="/images/tcppacket/pexels-vie-studio-7004955.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/zabbix/2015-08-13-zabbix-get-host/"><img class="prev-cover" src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">zabbix_gethost_01</div></div></a></div><div class="next-post pull-right"><a href="/shell/script/2015-04-09-shell-cookbook01/"><img class="next-cover" src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Shell-cookbook-01</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Seraphico</div><div class="author-info__description">osx1260@163.com</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/seraphico"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/MScuti" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@theone.x-matrix.in" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Contributors      : @nielsbasjes, @axilleas, @mairin, @ponsjuh, @yorn, @psftw, @etcet</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number"></span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Important-Notes"><span class="toc-number"></span> <span class="toc-text">Important Notes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#If-you-find-a-bug"><span class="toc-number"></span> <span class="toc-text">If you find a bug</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Security"><span class="toc-number"></span> <span class="toc-text">Security</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Installing-the-operating-system-CentOS-6-4-Minimal"><span class="toc-number"></span> <span class="toc-text">1. Installing the operating system (CentOS 6.4 Minimal)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Updating-and-adding-basic-software-and-services"><span class="toc-number"></span> <span class="toc-text">Updating and adding basic software and services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-EPEL-repository"><span class="toc-number"></span> <span class="toc-text">Add EPEL repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-PUIAS-Computational-repository"><span class="toc-number"></span> <span class="toc-text">Add PUIAS Computational repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-the-required-tools-for-GitLab"><span class="toc-number"></span> <span class="toc-text">Install the required tools for GitLab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-redis"><span class="toc-number"></span> <span class="toc-text">Configure redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-sendmail"><span class="toc-number"></span> <span class="toc-text">Configure sendmail</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Ruby"><span class="toc-number"></span> <span class="toc-text">2. Ruby</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-System-Users"><span class="toc-number"></span> <span class="toc-text">3. System Users</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-user-for-Git"><span class="toc-number"></span> <span class="toc-text">Create user for Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Forwarding-all-emails"><span class="toc-number"></span> <span class="toc-text">Forwarding all emails</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-GitLab-shell"><span class="toc-number"></span> <span class="toc-text">4. GitLab shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Database"><span class="toc-number"></span> <span class="toc-text">5. Database</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-MySQL"><span class="toc-number"></span> <span class="toc-text">5.1 MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-PostgreSQL"><span class="toc-number"></span> <span class="toc-text">5.2 PostgreSQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-GitLab"><span class="toc-number"></span> <span class="toc-text">6. GitLab</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Clone-the-Source"><span class="toc-number"></span> <span class="toc-text">Clone the Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-it"><span class="toc-number"></span> <span class="toc-text">Configure it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-GitLab-DB-settings"><span class="toc-number"></span> <span class="toc-text">Configure GitLab DB settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Gems"><span class="toc-number"></span> <span class="toc-text">Install Gems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Initialize-Database-and-Activate-Advanced-Features"><span class="toc-number"></span> <span class="toc-text">Initialize Database and Activate Advanced Features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Init-Script"><span class="toc-number"></span> <span class="toc-text">Install Init Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Check-Application-Status"><span class="toc-number"></span> <span class="toc-text">Check Application Status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-your-GitLab-instance"><span class="toc-number"></span> <span class="toc-text">Start your GitLab instance:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Double-check-Application-Status"><span class="toc-number"></span> <span class="toc-text">Double-check Application Status</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Configure-the-web-server"><span class="toc-number"></span> <span class="toc-text">7. Configure the web server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-number"></span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache"><span class="toc-number"></span> <span class="toc-text">Apache</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Configure-the-firewall"><span class="toc-number"></span> <span class="toc-text">8. Configure the firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Done"><span class="toc-number"></span> <span class="toc-text">Done!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Links-used-in-this-guide"><span class="toc-number"></span> <span class="toc-text">Links used in this guide</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/network/tcp/2020-12-12-dpdk-part01/" title="DPDK Test"><img src="/images/tcppacket/tcppacket.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DPDK Test"/></a><div class="content"><a class="title" href="/network/tcp/2020-12-12-dpdk-part01/" title="DPDK Test">DPDK Test</a><time datetime="2022-08-16T02:32:11.000Z" title="发表于 2022-08-16 10:32:11">2022-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/network/2017-06-16-network-arp/" title="network_arp_01"><img src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="network_arp_01"/></a><div class="content"><a class="title" href="/network/2017-06-16-network-arp/" title="network_arp_01">network_arp_01</a><time datetime="2017-06-16T08:50:00.000Z" title="发表于 2017-06-16 16:50:00">2017-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/container/2015-10-26-container_01/" title="coreos开发环境01"><img src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="coreos开发环境01"/></a><div class="content"><a class="title" href="/container/2015-10-26-container_01/" title="coreos开发环境01">coreos开发环境01</a><time datetime="2015-10-25T17:20:05.000Z" title="发表于 2015-10-26 01:20:05">2015-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/zabbix/2015-08-13-zabbix-get-host/" title="zabbix_gethost_01"><img src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="zabbix_gethost_01"/></a><div class="content"><a class="title" href="/zabbix/2015-08-13-zabbix-get-host/" title="zabbix_gethost_01">zabbix_gethost_01</a><time datetime="2015-08-13T04:55:11.000Z" title="发表于 2015-08-13 12:55:11">2015-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/git/script/2015-07-07-gitlab-learn/" title="gitlab-learn"><img src="/images/tcppacket/pexels-vie-studio-7004955.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="gitlab-learn"/></a><div class="content"><a class="title" href="/git/script/2015-07-07-gitlab-learn/" title="gitlab-learn">gitlab-learn</a><time datetime="2015-07-07T04:55:11.000Z" title="发表于 2015-07-07 12:55:11">2015-07-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Seraphico</div><div class="framework-info"><span>Power By  </span><a href="https://me.seraphs.blog">Seraph</a><span class="footer-separator">|</span><span>Service On </span><a target="_blank" rel="noopener" href="https://github.com/seraphico">Github</a></div><div class="footer_custom_text">自由 免费 突破 共享</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '7b5904f2584cd30eef8b',
+      clientSecret: '672f46efe88bf38748fbba1c07b0ad69eada2ce5',
+      repo: 'seraphico.github.io',
+      owner: 'seraphico',
+      admin: ['seraphico'],
+      id: '7331089fe5ca9af306cdc9d54aeb33b6',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script src="//code.tidio.co/ac59yq4zjakbqlob1libt6o4oqihaexr.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
