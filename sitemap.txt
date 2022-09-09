@@ -1,7 +1,4 @@
 https://me.seraphs.blog/tags/index.html
-https://me.seraphs.blog/python/2015-04-09-python01/
-https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook01/
-https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook02/
 https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook03/
 https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook04/
 https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook05/
@@ -12,6 +9,9 @@ https://me.seraphs.blog/container/2015-10-26-container_01/
 https://me.seraphs.blog/network/2017-06-16-network-arp/
 https://me.seraphs.blog/network/tcp/2020-12-12-dpdk-part01/
 https://me.seraphs.blog/categories/index.html
+https://me.seraphs.blog/python/2015-04-09-python01/
+https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook01/
+https://me.seraphs.blog/shell/script/2015-04-09-shell-cookbook02/
 https://me.seraphs.blog/
 https://me.seraphs.blog/tags/Python/
 https://me.seraphs.blog/tags/SHELL/
