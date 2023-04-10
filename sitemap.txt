@@ -36,7 +36,7 @@ https://me.seraphs.blog/categories/shell/script/
 https://me.seraphs.blog/categories/zabbix/
 https://me.seraphs.blog/categories/git/
 https://me.seraphs.blog/categories/container/
+https://me.seraphs.blog/categories/network/
 https://me.seraphs.blog/categories/zabbix/email/
 https://me.seraphs.blog/categories/git/script/
-https://me.seraphs.blog/categories/network/
 https://me.seraphs.blog/categories/network/tcp/
