@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Fira Code';
+    src: url('../fonts/FiraCode-Bold.ttf') format('woff2'),
+      url("../fonts/FiraCode-Bold.woff") format("woff");
+    font-weight: 400;
+    font-style: bold;
+  }
+  
+  body {
+    font-family: 'Fira Code';
+}
